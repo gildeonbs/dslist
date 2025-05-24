@@ -12,17 +12,17 @@ import java.util.stream.Collectors;
 @Service
 public class GameService {
 
-    // Injeto o game repository da camada abaixo - Puxo uma instancia do game repository dentro do game service
+    // I inject the game repository from the layer below - I get an instance of the game repository inside the game service
     @Autowired
     private GameRepository gameRepository;
 
-    // Retorna uma lista de objeto Game DTO
+    // Returns a list of GameMinDTO objects
     public List<GameMinDTO> findAll() {
         List<Game> result = gameRepository.findAll();
-        // Stream é uma lib do java permite fazer operações com sequência de dados.
-        // o map, transforma obj de uma coisa para outra
-        // Todos obj x que era game é transformado "->" em um novo GameMinDto x
-        // .toList() transforma de volta para lista normal
+        // Stream is a Java library that allows operations on sequences of data.
+        // The map transforms objects from one type to another
+        // Every object x that was a Game is transformed "->" into a new GameMinDTO x
+        // .toList() converts it back to a normal list
         List<GameMinDTO> gameMinDTOS = result.stream().map(x -> new GameMinDTO(x)).toList();
         return gameMinDTOS;
     }

@@ -2,7 +2,7 @@ package com.gildeonbs.dslist.dto;
 
 import com.gildeonbs.dslist.entities.Game;
 
-// Game mínimo DTO
+// Minimum Game DTO
 public class GameMinDTO {
 
     private Long id;
@@ -14,9 +14,9 @@ public class GameMinDTO {
     public GameMinDTO() {
     }
 
-    // Construtor que recebe objeto Game entity
+    // Constructor that receives a Game entity object
     public GameMinDTO(Game entity) {
-        // Não preciso do "this." porque não há ambiguidade entre parametros e atributos da classe
+        // I don't need "this." because there is no ambiguity between parameters and class attributes
         id = entity.getId();
         title = entity.getTitle();
         year = entity.getYear();
@@ -24,7 +24,7 @@ public class GameMinDTO {
         shortDescription = entity.getShortDescription();
     }
 
-    // Só preciso dos getters no DTO
+    // I only need the getters in the DTO
     public Long getId() {
         return id;
     }

@@ -4,28 +4,28 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
-// ORM - Mapeamento Objeto Relacional
-// Entity - Configura a classe Java para ser equivalente a uma tabela do banco relacional.
+// ORM - Object-Relational Mapping
+// Entity - Configures the Java class to be equivalent to a relational database table.
 @Entity
-// Table - Customiza o nome da tabela do banco
+// Table - Customizes the name of the database table
 @Table(name = "tb_game")
 public class Game {
 
-    // Id como chave primária e auto gerado
+    // Id as primary key and auto-generated
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    // "year" é uma palavra reservada no banco de dados postgres - Customizei o nome da coluna:
+    // "year" is a reserved word in the Postgres database - I customized the column name:
     @Column(name = "game_year")
     private Integer year;
     private String genre;
     private String platforms;
     private Double score;
-    // CamelCase são separados por underline automaticamente na tabela do banco
+    // CamelCase is automatically converted to underscores in the database table
     private String imgUrl;
 
-    // Customizei o tipo para TEXT para caber mais caracteres
+    // I customized the type to TEXT to fit more characters
     @Column(columnDefinition = "TEXT")
     private String shortDescription;
 
@@ -119,7 +119,7 @@ public class Game {
         this.longDescription = longDescription;
     }
 
-    // Metodo para comparar um objeto com outro - Por atributo ID
+    // Method to compare one object with another — by ID attribute
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -127,7 +127,7 @@ public class Game {
         return Objects.equals(id, game.id);
     }
 
-    // Metodo para comparar um objeto com outro - Por atributo ID
+    // Method to compare one object with another — by ID attribute
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
