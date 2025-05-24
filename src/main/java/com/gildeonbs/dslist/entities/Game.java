@@ -4,22 +4,28 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
+// ORM - Mapeamento Objeto Relacional
+// Entity - Configura a classe Java para ser equivalente a uma tabela do banco relacional.
 @Entity
+// Table - Customiza o nome da tabela do banco
 @Table(name = "tb_game")
 public class Game {
 
+    // Id como chave primária e auto gerado
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-
+    // "year" é uma palavra reservada no banco de dados postgres - Customizei o nome da coluna:
     @Column(name = "game_year")
     private Integer year;
     private String genre;
     private String platforms;
     private Double score;
+    // CamelCase são separados por underline automaticamente na tabela do banco
     private String imgUrl;
 
+    // Customizei o tipo para TEXT para caber mais caracteres
     @Column(columnDefinition = "TEXT")
     private String shortDescription;
 
@@ -113,6 +119,7 @@ public class Game {
         this.longDescription = longDescription;
     }
 
+    // Metodo para comparar um objeto com outro - Por atributo ID
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -120,6 +127,7 @@ public class Game {
         return Objects.equals(id, game.id);
     }
 
+    // Metodo para comparar um objeto com outro - Por atributo ID
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
