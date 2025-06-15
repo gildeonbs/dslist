@@ -3,6 +3,7 @@ package com.gildeonbs.dslist.services;
 import com.gildeonbs.dslist.dto.GameDTO;
 import com.gildeonbs.dslist.dto.GameMinDTO;
 import com.gildeonbs.dslist.entities.Game;
+import com.gildeonbs.dslist.projections.GameMinProjection;
 import com.gildeonbs.dslist.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,12 @@ public class GameService {
         return gameMinDTOS;
     }
 
+    // Returns a list of GameMinDTO objects by List Id
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        List<GameMinProjection> result = gameRepository.searchByList(listId);
+        List<GameMinDTO> gameMinDTOS = result.stream().map(x -> new GameMinDTO(x)).toList();
+        return gameMinDTOS;
+    }
 
 }

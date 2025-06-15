@@ -1,6 +1,7 @@
 package com.gildeonbs.dslist.dto;
 
 import com.gildeonbs.dslist.entities.Game;
+import com.gildeonbs.dslist.projections.GameMinProjection;
 
 // Minimum Game DTO
 public class GameMinDTO {
@@ -24,6 +25,15 @@ public class GameMinDTO {
         shortDescription = entity.getShortDescription();
     }
 
+    // Constructor that receives a GameMinProjection object
+    public GameMinDTO(GameMinProjection projection) {
+        // I don't need "this." because there is no ambiguity between parameters and class attributes
+        id = projection.getId();
+        title = projection.getTitle();
+        year = projection.getYear();
+        imgUrl = projection.getImgUrl();
+        shortDescription = projection.getShortDescription();
+    }
     // I only need the getters in the DTO
     public Long getId() {
         return id;
