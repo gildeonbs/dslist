@@ -30,7 +30,7 @@ public class GameMinDTO {
         // I don't need "this." because there is no ambiguity between parameters and class attributes
         id = projection.getId();
         title = projection.getTitle();
-        year = projection.getYear();
+        year = projection.getGameYear();
         imgUrl = projection.getImgUrl();
         shortDescription = projection.getShortDescription();
     }
